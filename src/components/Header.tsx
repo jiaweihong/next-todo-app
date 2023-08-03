@@ -1,13 +1,15 @@
 import React from 'react'
+import { useAuth } from '../../context/AuthContext'
 
 export default function Header() {
+  const {currentUser, logout} = useAuth()
   return (
-    <div className='flex justify-between w-ful p-6 text-4xl'>
-        <h1 className=''>
-            ToDo List
+    <div className='flex justify-between w-ful p-6 text-4xl border-b-2'>
+        <h1>
+            Todo List
         </h1>
 
-        <i className="fa fa-user cursor-pointer" aria-hidden="true"></i>
+        {currentUser && <i className="fa fa-sign-out hover:cursor-pointer hover:translate-x-2 duration-300" aria-hidden="true" onClick={() => {logout()}}></i>}
     </div>
   )
 }
