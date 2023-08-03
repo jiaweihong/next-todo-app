@@ -14,12 +14,20 @@ export function AuthProvider({children}) {
     const [loading, setLoading] = useState(true)
     const userInfo = useRef()
 
-    function signup(email: string, password: string) {
-        createUserWithEmailAndPassword(auth, email, password)
+    async function register(email: string, password: string) {
+        try {
+            await createUserWithEmailAndPassword(auth, email, password)
+        } catch (error) {
+            throw new Error("unable to register account")
+        }
     }
 
-    function login(email: string, password: string) {
-        signInWithEmailAndPassword(auth, email, password)
+    async function login(email: string, password: string) {
+        try {
+            await signInWithEmailAndPassword(auth, email, password)
+        } catch (error) {
+            throw new Error("incorrect email / password")
+        }
     }
 
     function logout() {
@@ -37,7 +45,7 @@ export function AuthProvider({children}) {
     const value = {
         currentUser,
         login,
-        signup,
+        register,
         logout,
         userInfo
     }
