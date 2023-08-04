@@ -29,8 +29,8 @@ export default function UserDashboard() {
     <div className='flex flex-col items-center'>
       <InputTodo todos={todos} setTodos={setTodos}/>
       
-      {Object.entries(todos).map(([index, value]) => (
-        <TodoCard index={index} todo={value}/>
+      {Object.entries(todos).map(([key, value]) => (
+        <TodoCard todo={value}/>
       ))}
     </div>
   )
