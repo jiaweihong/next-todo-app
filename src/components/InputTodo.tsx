@@ -12,6 +12,10 @@ export default function InputTodo(props) {
     const {currentUser} = useAuth()
 
     async function submitTodoHandler() {
+        if (!todo) {
+            return
+        }
+
         const userRef = doc(db, 'users', currentUser.uid)
         
         const newIndex = uuidv4()
@@ -33,7 +37,6 @@ export default function InputTodo(props) {
 
         setTodos(newTodos)
     }
-
 
     return (
         <div className='w-1/2 py-10'>
