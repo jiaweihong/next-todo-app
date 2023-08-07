@@ -26,7 +26,7 @@ export default function UserDashboard() {
   }, [])
 
   return (
-    <div className='flex flex-col items-center'>
+    <div className='flex flex-1 flex-col items-center'>
       <InputTodo todos={todos} setTodos={setTodos}/>
       
       {Object.entries(todos).map(([key, value]) => (

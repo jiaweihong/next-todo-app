@@ -32,7 +32,7 @@ export default function Login() {
   }
 
   return (
-    <div className='flex flex-col justify-center items-center space-y-4 h-full'>
+    <div className='flex flex-col justify-center items-center space-y-4 h-full p-52'>
         <p className='text-4xl font-bold uppercase'>{isLoggingIn ? 'login' : 'register'}</p>
 
         <div className='text-red-500 text-left w-96'>{error}</div>
