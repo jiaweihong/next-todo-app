@@ -29,7 +29,6 @@ export default function TodoCard(props) {
         }, {merge: true})
         
 
-
         setIsEditting(!isEditting)
     }
 

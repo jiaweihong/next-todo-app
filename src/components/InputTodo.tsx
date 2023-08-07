@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { doc, setDoc } from 'firebase/firestore'
 import { db } from '../../firebase'
 import { useAuth } from '../../context/AuthContext'
+import { v4 as uuidv4 } from 'uuid';
 
 export default function InputTodo(props) {
     let {todosRef, todos, setTodos} = props
@@ -13,7 +14,7 @@ export default function InputTodo(props) {
     async function submitTodoHandler() {
         const userRef = doc(db, 'users', currentUser.uid)
         
-        const newIndex = Object.keys(todos).length + 1
+        const newIndex = uuidv4()
 
         await setDoc(userRef, {
             'todos': {
@@ -28,11 +29,11 @@ export default function InputTodo(props) {
             [newIndex]: todo
         }
 
+        console.log(newTodos)
+
         setTodos(newTodos)
     }
 
-    console.log(todos)
-    
 
     return (
         <div className='w-1/2 py-10'>
