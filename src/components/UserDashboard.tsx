@@ -30,7 +30,7 @@ export default function UserDashboard() {
       <InputTodo todos={todos} setTodos={setTodos}/>
       
       {Object.entries(todos).map(([key, value]) => (
-        <TodoCard todo={value}/>
+        <TodoCard todo={value} index={key} setTodos={setTodos} todos={todos}/>
       ))}
     </div>
   )

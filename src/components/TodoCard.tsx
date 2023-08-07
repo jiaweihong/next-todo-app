@@ -1,16 +1,34 @@
-import { Input } from 'postcss';
+
 import React, { useState } from 'react'
+import { useAuth } from '../../context/AuthContext';
+import { doc, setDoc } from 'firebase/firestore'
+import { db } from '../../firebase'
+
 
 export default function TodoCard(props) {
-    const {todo} = props
+    const {todo, index, setTodos, todos} = props
+    const {currentUser} = useAuth()
     
     const [isEditting, setIsEditting] = useState(false)
 
     const [todoEdit, setTodoEdit] = useState(todo)
 
-    function editHandler() {
+    async function editHandler() {
+        if (!todoEdit) {
+            return
+        }
         // update the firebase data
         // get setTodo from parent component, and update  todo state within the component itself so that the changes are reflected locally
+        setTodos({...todos, [index]: todoEdit})
+
+        const userRef = doc(db, 'users', currentUser.uid) 
+        await setDoc(userRef, {
+            todos: {
+                [index]: todoEdit
+            }
+        }, {merge: true})
+        
+
 
         setIsEditting(!isEditting)
     }
