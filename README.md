@@ -1,6 +1,6 @@
 ## Overview
 
-Just a quick todo-list project to learn the tech stack of Next.js, React, Firebase and TailWind.
+Just a quick todo-list project to learn the tech stack of Next.js, Firebase and TailWind.
 
 Features of the app include:
 
